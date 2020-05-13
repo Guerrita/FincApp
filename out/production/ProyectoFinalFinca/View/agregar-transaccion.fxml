@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AgregarTransaccionController">
     <children>
-        <VBox layoutX="32.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox layoutX="32.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-            <Label text="Agrega tu transaccion">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin></Label>
+            <Label text="Agrega tu transaccion" />
             <GridPane>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,20 +19,17 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Descripcion" />
+                  <Label text="Descripicon" />
                   <Label text="Valor" GridPane.rowIndex="1" />
                   <Label text="Fecha" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtDescripcion" GridPane.columnIndex="1" />
-                  <TextField fx:id="txtValor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <DatePicker fx:id="datePickerFecha" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField GridPane.columnIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
-               <VBox.margin>
-                  <Insets left="10.0" />
-               </VBox.margin>
             </GridPane>
                 <ButtonBar prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#btnIngresar_action" text="Ingresar" />
+                        <Button mnemonicParsing="false" text="Ingresar" />
                     </buttons>
                 </ButtonBar>
             </children>

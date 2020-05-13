@@ -7,7 +7,7 @@ public class Transaccion {
     private String Descripcion;
     private LocalDateTime fecha;
 
-    public Transaccion(int valor, String descripcion, LocalDateTime fecha) {
+    public Transaccion(String descripcion,int valor,LocalDateTime fecha) {
         this.valor = valor;
         Descripcion = descripcion;
         this.fecha = fecha;

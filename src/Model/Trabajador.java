@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Trabajador extends Persona {
     private LocalDateTime fechaDeRegistro;
 
-    public Trabajador(int id, int celular, String nombres, String apellidos, LocalDateTime fechaDeRegistro) {
+    public Trabajador(String nombres, String apellidos, int id, int celular, LocalDateTime fechaDeRegistro) {
         super(id, celular, nombres, apellidos);
         this.fechaDeRegistro = fechaDeRegistro;
     }
