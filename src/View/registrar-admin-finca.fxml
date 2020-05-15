@@ -33,11 +33,11 @@
                   <TextField fx:id="txtNombres" GridPane.columnIndex="1" />
                   <TextField fx:id="txtApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="txtIdentificacion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtContrasena" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label text="Confirmar contraseña" GridPane.rowIndex="5" />
-                  <TextField fx:id="txtConfirmarContraseña" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label text="Celular" GridPane.rowIndex="3" />
                   <TextField fx:id="txtCelular" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="txtContrasena" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <PasswordField fx:id="txtConfirmarContrasena" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
                <padding>
                   <Insets left="10.0" />

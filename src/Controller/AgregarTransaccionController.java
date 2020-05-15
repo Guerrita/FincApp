@@ -3,10 +3,8 @@ package Controller;
 import Model.Transaccion;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-
-
-import java.awt.*;
 import java.time.LocalDate;
 
 public class AgregarTransaccionController {
@@ -18,7 +16,12 @@ public class AgregarTransaccionController {
 
     @FXML
     public void  initialize() {
-
+        txtValor.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().matches("([1-9][0-9]*)?")&& change.getControlNewText().length()<=12){
+                return change;
+            }
+            return null;
+        }));
     }
 
     public void btnIngresar_action(){

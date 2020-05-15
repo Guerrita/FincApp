@@ -3,19 +3,16 @@ package Controller;
 import Model.Administrador;
 import Model.Finca;
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
 
-import javax.swing.text.TableView;
-
-
 public class RegistrarAdminFincaController {
     @FXML
-    private TextField txtNombres,txtApellidos,txtIdentificacion,txtCelular,txtContrasena,txtConfirmarContrasena,txtNombreFinca,txtExtension;
-
-
-
+    private TextField txtNombres,txtApellidos,txtIdentificacion,txtCelular,txtNombreFinca,txtExtension;
+    @FXML
+    private PasswordField txtContrasena,txtConfirmarContrasena;
     @FXML
     public void  initialize(){
         txtIdentificacion.setTextFormatter(new TextFormatter<>(change -> {

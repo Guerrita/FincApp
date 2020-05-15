@@ -3,14 +3,13 @@ package Controller;
 import Model.Trabajador;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-
-import javax.swing.*;
+import javafx.scene.control.TextField;
 import java.time.LocalDate;
-import java.time.chrono.Chronology;
+
 
 public class AgregarTrabajadorController {
     @FXML
-    private JTextField txtIdTrabajador, txtNombresTrabajador,
+    private TextField txtIdTrabajador, txtNombresTrabajador,
             txtApellidosTrabajador, txtCelularTrabajador;
     @FXML
     private DatePicker calendarFechaDeRegistro;
@@ -26,6 +25,6 @@ public class AgregarTrabajadorController {
         LocalDate fechaIngresada = calendarFechaDeRegistro.getValue();
 
 
-        Trabajador trabajador = new Trabajador(nombresIngresados,apellidosIngresados,Integer.valueOf(idIngresado),Integer.valueOf(celularIngresado),fechaIngresada)
+        Trabajador trabajador = new Trabajador(nombresIngresados,apellidosIngresados,Integer.valueOf(idIngresado),Integer.valueOf(celularIngresado),fechaIngresada);
     }
 }

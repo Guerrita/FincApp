@@ -26,7 +26,7 @@
                   <Label text="Identificacion" />
                   <Label text="Contraseña" GridPane.rowIndex="1" />
                   <TextField fx:id="txtIdentificacion" GridPane.columnIndex="1" />
-                  <TextField fx:id="txtContrasena" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <PasswordField fx:id="txtContrasena" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" />
