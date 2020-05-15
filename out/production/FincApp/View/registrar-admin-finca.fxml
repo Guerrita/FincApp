@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="contenedorPrincipal" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegistrarAdminFincaController">
+   <children>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Informacion Administrador">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="10.0" />
+               </VBox.margin></Label>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Nombres " />
+                  <Label text="Apellidos" GridPane.rowIndex="1" />
+                  <Label text="Identificacion" GridPane.rowIndex="2" />
+                  <Label text="Contraseña" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtNombres" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtIdentificacion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Confirmar contraseña" GridPane.rowIndex="5" />
+                  <Label text="Celular" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtCelular" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="txtContrasena" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <PasswordField fx:id="txtConfirmarContrasena" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </GridPane>
+            <Label text="Informacion Finca">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Nombre" />
+                  <Label text="Extension" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtNombreFinca" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtExtension" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </GridPane>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" onAction="#btnGuardarAdmin_action" text="Guardar" />
+              </buttons>
+            </ButtonBar>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="10.0" top="20.0" />
+         </padding></VBox>
+   </children>
+</AnchorPane>

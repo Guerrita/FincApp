@@ -3,17 +3,16 @@ package Dao.impl;
 import Dao.AdministradorDao;
 import Model.Administrador;
 
-import java.util.Optional;
-
 public class AdministradorDaoNio implements AdministradorDao {
+    private static Administrador administrador = null;
+
     @Override
-    public void registrarAdministrador(Administrador administrador) {
-
-
+    public void registrarAdministrador(Administrador administradorIngresado) {
+        administrador = administradorIngresado;
     }
 
-    @Override
-    public Optional<Administrador> obtenerAdministrador() {
-        return Optional.empty();
+
+    public static Administrador obtenerAdministrador() {
+        return administrador;
     }
 }

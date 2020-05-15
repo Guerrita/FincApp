@@ -1,11 +1,20 @@
 package Controller;
 
+import Bsn.AdministradorBsn;
+import Dao.impl.AdministradorDaoNio;
 import Model.Administrador;
 import Model.Finca;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
 
 
 public class RegistrarAdminFincaController {
@@ -13,6 +22,11 @@ public class RegistrarAdminFincaController {
     private TextField txtNombres,txtApellidos,txtIdentificacion,txtCelular,txtNombreFinca,txtExtension;
     @FXML
     private PasswordField txtContrasena,txtConfirmarContrasena;
+    @FXML
+    private BorderPane vistaPrincipal;
+
+    private AdministradorBsn administradorBsn = new AdministradorBsn();
+
     @FXML
     public void  initialize(){
         txtIdentificacion.setTextFormatter(new TextFormatter<>(change -> {
@@ -48,11 +62,25 @@ public class RegistrarAdminFincaController {
 
         boolean esValido = validarCampos(idIngresado,nombresIngresados,apellidosIngresados,celularIngresado,contrasenaIngresado,confirmarContrasenaIngresado,nombreFincaIngresado,extensionIngresado);
 
+        if (!esValido){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registro administrador");
+            alert.setHeaderText("Registro administrador");
+            alert.setContentText("Diligencie todos los datos");
+            alert.showAndWait();
+            return;
+        }
         Administrador administrador = new Administrador(nombresIngresados,apellidosIngresados,Integer.valueOf(idIngresado),Integer.valueOf(celularIngresado),contrasenaIngresado);
         Finca finca = new Finca(nombreFincaIngresado,extensionIngresado);
+        administrador.setFinca(finca);
 
+        administradorBsn.registrarAdministrador(administrador);
+
+
+        System.out.println(AdministradorDaoNio.obtenerAdministrador().toString());
         //ToDO validar datos ingresados
         //Ingresar lo datos a la base de datos
+
     }
 
 
