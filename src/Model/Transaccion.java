@@ -1,13 +1,14 @@
 package Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Transaccion {
     private int valor;
     private String Descripcion;
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
-    public Transaccion(String descripcion,int valor,LocalDateTime fecha) {
+    public Transaccion(String descripcion, int valor, LocalDate fecha) {
         this.valor = valor;
         Descripcion = descripcion;
         this.fecha = fecha;
@@ -29,11 +30,11 @@ public class Transaccion {
         Descripcion = descripcion;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 }

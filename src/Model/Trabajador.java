@@ -1,20 +1,20 @@
 package Model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Trabajador extends Persona {
-    private LocalDateTime fechaDeRegistro;
+    private LocalDate fechaDeRegistro;
 
-    public Trabajador(String nombres, String apellidos, int id, int celular, LocalDateTime fechaDeRegistro) {
+    public Trabajador(String nombres, String apellidos, int id, int celular, LocalDate fechaDeRegistro) {
         super(id, celular, nombres, apellidos);
         this.fechaDeRegistro = fechaDeRegistro;
     }
 
-    public LocalDateTime getFechaDeRegistro() {
+    public LocalDate getFechaDeRegistro() {
         return fechaDeRegistro;
     }
 
-    public void setFechaDeRegistro(LocalDateTime fechaDeRegistro) {
+    public void setFechaDeRegistro(LocalDate fechaDeRegistro) {
         this.fechaDeRegistro = fechaDeRegistro;
     }
 }

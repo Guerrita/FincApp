@@ -9,6 +9,7 @@ public class IngresoAdminController {
     private TextField txtIdentificacion,
                       txtContrasena;
     public void btnIngresar_action(){
-
+        String idIngresado = txtIdentificacion.getText().trim();
+        String contrasenaIngresado = txtContrasena.getText().trim();
     }
 }
