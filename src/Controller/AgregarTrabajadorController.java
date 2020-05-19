@@ -44,9 +44,9 @@ public class AgregarTrabajadorController {
         String apellidosIngresados = txtApellidosTrabajador.getText().trim();
         String celularIngresado = txtCelularTrabajador.getText().trim();
         LocalDate fechaIngresada = calendarFechaDeRegistro.getValue();
-        boolean valido=validarCampos(idIngresado, nombresIngresados, apellidosIngresados,
+        boolean valido=validarCampos(fechaIngresada, idIngresado, nombresIngresados, apellidosIngresados,
                 celularIngresado);
-        if(fechaIngresada==null || !valido){
+        if(!valido){
             mostrarAlertaErrorTrabajador("Proceso de registro"
                     ,"Ingrese todos los campos");
             return;
@@ -76,7 +76,8 @@ public class AgregarTrabajadorController {
         alertError.showAndWait();
     }
 
-    private boolean validarCampos(String... campos) {
+    private boolean validarCampos(LocalDate fecha, String... campos) {
+        if(fecha==null)return false;
         for (int i = 0; i < campos.length; i++) {
             if (campos[i] == null || "".equals(campos[i])) {
                 return false;
