@@ -2,31 +2,31 @@ package Model;
 
 public abstract class Persona {
     //Atributos
-    private int id,
+    private String id,
                 celular;
     private String nombres,
                    apellidos;
 
-    public Persona(int id, int celular, String nombres, String apellidos) {
+    public Persona(String id, String celular, String nombres, String apellidos) {
         this.id = id;
         this.celular = celular;
         this.nombres = nombres;
         this.apellidos = apellidos;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

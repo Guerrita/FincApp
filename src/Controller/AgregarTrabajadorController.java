@@ -51,8 +51,8 @@ public class AgregarTrabajadorController {
                     ,"Ingrese todos los campos");
             return;
         }
-        Trabajador trabajador = new Trabajador(Integer.valueOf(idIngresado),nombresIngresados, apellidosIngresados
-                ,Integer.valueOf(celularIngresado),fechaIngresada);
+        Trabajador trabajador = new Trabajador(idIngresado,nombresIngresados, apellidosIngresados
+                ,celularIngresado,fechaIngresada);
         try{
             trabajadorBsn.registrarTrabajador(trabajador);
             Alert alertExito = new Alert(Alert.AlertType.INFORMATION);

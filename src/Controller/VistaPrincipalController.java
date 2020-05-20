@@ -9,11 +9,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
+import java.awt.*;
 import java.io.IOException;
 
 public class VistaPrincipalController {
     @FXML
     private  BorderPane vistaPrincipal;
+    @FXML
+    public static Menu mnuAgregar, mnuGenerarReporte;
+
     @FXML
     public void initialize() throws IOException {
         AdministradorDaoNio.obtenerAdministrador();

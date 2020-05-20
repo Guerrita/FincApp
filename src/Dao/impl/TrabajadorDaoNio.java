@@ -78,8 +78,8 @@ public class TrabajadorDaoNio implements TrabajadorDao {
 
     private Trabajador parseTrabajador2Object(String trabajadorString) {
         String[] datosTrabajador = trabajadorString.split(FIELD_SEPARATOR);
-        Trabajador trabajador = new Trabajador(Integer.parseInt(datosTrabajador[0]), datosTrabajador[1]
-                , datosTrabajador[2], Integer.parseInt(datosTrabajador[3]), LocalDate.parse(datosTrabajador[4]));
+        Trabajador trabajador = new Trabajador(datosTrabajador[0], datosTrabajador[1]
+                , datosTrabajador[2], datosTrabajador[3], LocalDate.parse(datosTrabajador[4]));
         //todo revisar machetazo de localDate.parse() fecha
         return trabajador;
     }

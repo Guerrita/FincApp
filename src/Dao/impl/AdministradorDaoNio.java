@@ -56,17 +56,16 @@ public class AdministradorDaoNio implements AdministradorDao {
 
 
     public static void obtenerAdministrador() throws IOException { ///Como hacer cuando solo se tiene un objeto en el archivo
-        /*BufferedReader br = null;
-        FileReader fr=null;
+        BufferedReader br = null;
+        FileReader fr;
         try{
              fr = new FileReader(NOMBRE_ARCHIVO);
+             br = new BufferedReader(fr);
+            String admin = br.readLine();
+            administrador = parseAdministrador2Object(admin);
         }catch (Exception e){
             e.printStackTrace();
         }
-
-        br = new BufferedReader(fr);
-        String admin = br.readLine();
-        administrador = parseAdministrador2Object(admin);*/
     }
 
     public static Administrador getAdministrador() {
@@ -78,8 +77,8 @@ public class AdministradorDaoNio implements AdministradorDao {
         //ToDo: validar el tamaño del arreglo
         Administrador administrador = new Administrador(datosAdministrador[0],
                 datosAdministrador[1],
-                Integer.valueOf(datosAdministrador[2]),
-                Integer.valueOf(datosAdministrador[3]),
+                datosAdministrador[2],
+                datosAdministrador[3],
                 datosAdministrador[4]);
         return administrador;
     }

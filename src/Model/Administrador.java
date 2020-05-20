@@ -7,7 +7,7 @@ public class Administrador extends Persona {
     private List<Transaccion> transacciones;
     private Finca finca;
 
-    public Administrador(String nombres,String apellidos,int id, int celular,  String contrasena) {
+    public Administrador(String nombres,String apellidos,String id, String celular,  String contrasena) {
         super(id, celular, nombres, apellidos);
         this.contrasena = contrasena;
     }

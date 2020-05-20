@@ -5,15 +5,15 @@
 
 <BorderPane fx:id="vistaPrincipal" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VistaPrincipalController">
    <top>
-      <MenuBar disable="true" BorderPane.alignment="CENTER">
+      <MenuBar fx:id="menuBarPrincipal" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Agregar">
+          <Menu fx:id="mnuAgregar" disable="true" mnemonicParsing="false" text="Agregar">
             <items>
               <MenuItem mnemonicParsing="false" text="Trabajador" />
                   <MenuItem mnemonicParsing="false" text="Factura" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Generar reporte">
+          <Menu fx:id="mnuGenerarReporte" disable="true" mnemonicParsing="false" text="Generar reporte">
             <items>
               <MenuItem mnemonicParsing="false" text="Trabajadores" />
                   <MenuItem mnemonicParsing="false" text="Facturas" />

@@ -69,7 +69,7 @@
             </GridPane>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#btnGuardarAdmin_action" text="Guardar" />
+                <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#btnGuardarAdmin_action" text="Guardar" />
               </buttons>
             </ButtonBar>
          </children>

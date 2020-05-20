@@ -7,10 +7,7 @@ import Model.Finca;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -23,7 +20,7 @@ public class RegistrarAdminFincaController {
     @FXML
     private PasswordField txtContrasena,txtConfirmarContrasena;
     @FXML
-    private BorderPane vistaPrincipal;
+    private Button btnGuardar;
 
     private AdministradorBsn administradorBsn = new AdministradorBsn();
 
@@ -70,12 +67,24 @@ public class RegistrarAdminFincaController {
             alert.showAndWait();
             return;
         }
-        Administrador administrador = new Administrador(nombresIngresados,apellidosIngresados,Integer.valueOf(idIngresado),Integer.valueOf(celularIngresado),contrasenaIngresado);
+        Administrador administrador = new Administrador(nombresIngresados,apellidosIngresados,idIngresado,celularIngresado,contrasenaIngresado);
         Finca finca = new Finca(nombreFincaIngresado,extensionIngresado);
         administrador.setFinca(finca);
 
         try {
             administradorBsn.registrarAdministrador(administrador);
+            txtIdentificacion.setDisable(true);
+            txtNombres.setDisable(true);
+            txtApellidos.setDisable(true);
+            txtCelular.setDisable(true);
+            txtContrasena.setDisable(true);
+            txtConfirmarContrasena.setDisable(true);
+            txtNombreFinca.setDisable(true);
+            txtExtension.setDisable(true);
+            btnGuardar.setDisable(true);
+            VistaPrincipalController.mnuGenerarReporte.setEnabled(true);
+            VistaPrincipalController.mnuAgregar.setEnabled(true);
+
         }catch (Exception ioe){
             ioe.printStackTrace();
         }
