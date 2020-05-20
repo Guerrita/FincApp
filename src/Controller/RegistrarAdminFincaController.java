@@ -1,6 +1,7 @@
 package Controller;
 
 import Bsn.AdministradorBsn;
+import Bsn.FincaBsn;
 import Dao.impl.AdministradorDaoNio;
 import Model.Administrador;
 import Model.Finca;
@@ -23,6 +24,7 @@ public class RegistrarAdminFincaController {
     private Button btnGuardar;
 
     private AdministradorBsn administradorBsn = new AdministradorBsn();
+    private FincaBsn fincaBsn = new FincaBsn();
 
     @FXML
     public void  initialize(){
@@ -67,28 +69,36 @@ public class RegistrarAdminFincaController {
             alert.showAndWait();
             return;
         }
-        Administrador administrador = new Administrador(nombresIngresados,apellidosIngresados,idIngresado,celularIngresado,contrasenaIngresado);
-        Finca finca = new Finca(nombreFincaIngresado,extensionIngresado);
-        administrador.setFinca(finca);
 
-        try {
-            administradorBsn.registrarAdministrador(administrador);
-            txtIdentificacion.setDisable(true);
-            txtNombres.setDisable(true);
-            txtApellidos.setDisable(true);
-            txtCelular.setDisable(true);
-            txtContrasena.setDisable(true);
-            txtConfirmarContrasena.setDisable(true);
-            txtNombreFinca.setDisable(true);
-            txtExtension.setDisable(true);
-            btnGuardar.setDisable(true);
-            VistaPrincipalController.mnuGenerarReporte.setEnabled(true);
-            VistaPrincipalController.mnuAgregar.setEnabled(true);
-
-        }catch (Exception ioe){
-            ioe.printStackTrace();
+        if (contrasenaIngresado.equals(confirmarContrasenaIngresado)){
+            Administrador administrador = new Administrador(nombresIngresados,apellidosIngresados,idIngresado,celularIngresado,contrasenaIngresado);
+            Finca finca = new Finca(nombreFincaIngresado,extensionIngresado);
+            administrador.setFinca(finca);
+            try {
+                administradorBsn.registrarAdministrador(administrador);
+                fincaBsn.registrarFinca(finca);
+                txtIdentificacion.setDisable(true);
+                txtNombres.setDisable(true);
+                txtApellidos.setDisable(true);
+                txtCelular.setDisable(true);
+                txtContrasena.setDisable(true);
+                txtConfirmarContrasena.setDisable(true);
+                txtNombreFinca.setDisable(true);
+                txtExtension.setDisable(true);
+                btnGuardar.setDisable(true);
+                limpiarCampos();
+            }catch (Exception ioe){
+                ioe.printStackTrace();
+            }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registro administrador");
+            alert.setHeaderText("Contrasena");
+            alert.setContentText("Las contrasenas no son iguales");
+            txtContrasena.requestFocus();
+            alert.showAndWait();
+            return;
         }
-
 
 
         //ToDO validar datos ingresados
@@ -96,9 +106,6 @@ public class RegistrarAdminFincaController {
 
     }
 
-
-    //Se puede hacer este metodo publico y estatico para que funcione en todas las clases?
-    ///////////////////////////////////////////////////////////////////////////////////
     private boolean validarCampos(String... campos){
         for (int i = 0; i <campos.length ; i++) {
             if (campos[i]==null || "".equals(campos[i])){
@@ -112,6 +119,7 @@ public class RegistrarAdminFincaController {
         txtIdentificacion.clear();
         txtApellidos.clear();
         txtNombres.clear();
+        txtCelular.clear();
         txtContrasena.clear();
         txtConfirmarContrasena.clear();
         txtNombreFinca.clear();

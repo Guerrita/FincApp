@@ -2,10 +2,13 @@ package Controller;
 
 import Dao.impl.AdministradorDaoNio;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
+import java.io.IOException;
 
 
 public class IngresoAdminController {
@@ -22,7 +25,7 @@ public class IngresoAdminController {
         System.out.println(AdministradorDaoNio.getAdministrador().getContrasena());
 
         if (idIngresado.equals(AdministradorDaoNio.getAdministrador().getId()) && contrasenaIngresado.equals(AdministradorDaoNio.getAdministrador().getContrasena())){
-            System.out.println("Ingreso Exitoso");
+
         }
     }
 }

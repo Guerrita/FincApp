@@ -2,7 +2,10 @@ package Controller;
 
 
 import Bsn.AdministradorBsn;
+import Dao.FincaDao;
 import Dao.impl.AdministradorDaoNio;
+import Dao.impl.FincaDaoNio;
+import Model.Administrador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -14,12 +17,13 @@ import java.io.IOException;
 
 public class VistaPrincipalController {
     @FXML
-    private  BorderPane vistaPrincipal;
+    private BorderPane vistaPrincipal;
     @FXML
     public static Menu mnuAgregar, mnuGenerarReporte;
 
     @FXML
     public void initialize() throws IOException {
+        FincaDaoNio.obtenerFinca();
         AdministradorDaoNio.obtenerAdministrador();
         if (AdministradorDaoNio.getAdministrador() ==null) {
             try {
@@ -39,5 +43,6 @@ public class VistaPrincipalController {
             }
         }
     }
+
 }
 

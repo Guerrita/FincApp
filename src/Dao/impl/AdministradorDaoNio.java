@@ -1,7 +1,9 @@
 package Dao.impl;
 
 import Dao.AdministradorDao;
+import Dao.FincaDao;
 import Model.Administrador;
+import Model.Finca;
 
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -33,7 +35,7 @@ public class AdministradorDaoNio implements AdministradorDao {
 
     @Override
     public void registrarAdministrador(Administrador administradorIngresado) {
-        administrador = administradorIngresado;
+        this.administrador = administradorIngresado;
         String administradorString = parseAdmnistrador2String(administradorIngresado);
         byte[] datosRegistro = administradorString.getBytes();
         ByteBuffer byteBuffer = ByteBuffer.wrap(datosRegistro);
@@ -59,10 +61,11 @@ public class AdministradorDaoNio implements AdministradorDao {
         BufferedReader br = null;
         FileReader fr;
         try{
-             fr = new FileReader(NOMBRE_ARCHIVO);
-             br = new BufferedReader(fr);
+            fr = new FileReader(NOMBRE_ARCHIVO);
+            br = new BufferedReader(fr);
             String admin = br.readLine();
             administrador = parseAdministrador2Object(admin);
+            administrador.setFinca(FincaDaoNio.getFinca());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -74,7 +77,6 @@ public class AdministradorDaoNio implements AdministradorDao {
 
     private static Administrador parseAdministrador2Object(String administradorString) {
         String[] datosAdministrador = administradorString.split(FIELD_SEPARATOR);
-        //ToDo: validar el tamaño del arreglo
         Administrador administrador = new Administrador(datosAdministrador[0],
                 datosAdministrador[1],
                 datosAdministrador[2],
