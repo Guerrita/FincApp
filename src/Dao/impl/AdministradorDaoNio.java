@@ -3,7 +3,7 @@ package Dao.impl;
 import Dao.AdministradorDao;
 import Model.Administrador;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
@@ -13,18 +13,18 @@ import java.nio.file.Paths;
 import static java.nio.file.StandardOpenOption.APPEND;
 
 public class AdministradorDaoNio implements AdministradorDao {
-    private static Administrador administrador ;
+    private static Administrador administrador;
 
-    private final static String NOMBRE_ARCHIVO="administrador";
-    private final static Path ARCHIVO= Paths.get(NOMBRE_ARCHIVO);
+    private final static String NOMBRE_ARCHIVO = "administrador";
+    private final static Path ARCHIVO = Paths.get(NOMBRE_ARCHIVO);
     private final static String FIELD_SEPARATOR = ",";
     private final static String RECORD_SEPARATOR = System.lineSeparator();
 
-    public AdministradorDaoNio(){
-        if (!Files.exists(ARCHIVO)){
+    public AdministradorDaoNio() {
+        if (!Files.exists(ARCHIVO)) {
             try {
                 Files.createFile(ARCHIVO);
-            }catch (IOException ioe){
+            } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
         }
@@ -37,9 +37,9 @@ public class AdministradorDaoNio implements AdministradorDao {
         String administradorString = parseAdmnistrador2String(administradorIngresado);
         byte[] datosRegistro = administradorString.getBytes();
         ByteBuffer byteBuffer = ByteBuffer.wrap(datosRegistro);
-        try(FileChannel fileChannel = FileChannel.open(ARCHIVO, APPEND)){
+        try (FileChannel fileChannel = FileChannel.open(ARCHIVO, APPEND)) {
             fileChannel.write(byteBuffer);
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -55,15 +55,32 @@ public class AdministradorDaoNio implements AdministradorDao {
     }
 
 
-    public static Administrador obtenerAdministrador() { ///Como hacer cuando solo se tiene un objeto en el archivo
-        String[] admin = Files.(ARCHIVO);
+    public static void obtenerAdministrador() throws IOException { ///Como hacer cuando solo se tiene un objeto en el archivo
+        /*BufferedReader br = null;
+        FileReader fr=null;
+        try{
+             fr = new FileReader(NOMBRE_ARCHIVO);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-        return administrador = ;
+        br = new BufferedReader(fr);
+        String admin = br.readLine();
+        administrador = parseAdministrador2Object(admin);*/
     }
 
-    private Administrador parseAdministrador2Object() {
-        String[] datosEstudiante = estudianteString.split(FIELD_SEPARATOR);
+    public static Administrador getAdministrador() {
+        return administrador;
+    }
+
+    private static Administrador parseAdministrador2Object(String administradorString) {
+        String[] datosAdministrador = administradorString.split(FIELD_SEPARATOR);
         //ToDo: validar el tamaño del arreglo
-        Estudiante estudiante = new Estudiante(datosEstudiante[0],datosEstudiante[1],datosEstudiante[2],datosEstudiante[3]);
-        return estudiante;
+        Administrador administrador = new Administrador(datosAdministrador[0],
+                datosAdministrador[1],
+                Integer.valueOf(datosAdministrador[2]),
+                Integer.valueOf(datosAdministrador[3]),
+                datosAdministrador[4]);
+        return administrador;
+    }
 }

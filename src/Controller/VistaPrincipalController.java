@@ -15,8 +15,9 @@ public class VistaPrincipalController {
     @FXML
     private  BorderPane vistaPrincipal;
     @FXML
-    public void initialize() {
-        if (AdministradorDaoNio.obtenerAdministrador() ==null) {
+    public void initialize() throws IOException {
+        AdministradorDaoNio.obtenerAdministrador();
+        if (AdministradorDaoNio.getAdministrador() ==null) {
             try {
                 AnchorPane registrarEstudiante = FXMLLoader
                         .load(getClass().getResource("../View/registrar-admin-finca.fxml"));

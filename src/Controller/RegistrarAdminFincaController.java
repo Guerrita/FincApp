@@ -74,10 +74,14 @@ public class RegistrarAdminFincaController {
         Finca finca = new Finca(nombreFincaIngresado,extensionIngresado);
         administrador.setFinca(finca);
 
-        administradorBsn.registrarAdministrador(administrador);
+        try {
+            administradorBsn.registrarAdministrador(administrador);
+        }catch (Exception ioe){
+            ioe.printStackTrace();
+        }
 
 
-        System.out.println(AdministradorDaoNio.obtenerAdministrador().toString());
+
         //ToDO validar datos ingresados
         //Ingresar lo datos a la base de datos
 
