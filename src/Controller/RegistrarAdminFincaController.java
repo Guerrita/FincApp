@@ -26,6 +26,8 @@ public class RegistrarAdminFincaController {
     private AdministradorBsn administradorBsn = new AdministradorBsn();
     private FincaBsn fincaBsn = new FincaBsn();
 
+    private VistaPrincipalController principal;
+
     @FXML
     public void  initialize(){
         txtIdentificacion.setTextFormatter(new TextFormatter<>(change -> {
@@ -87,14 +89,15 @@ public class RegistrarAdminFincaController {
                 txtExtension.setDisable(true);
                 btnGuardar.setDisable(true);
                 limpiarCampos();
+                this.principal.habilitarMenu();
             }catch (Exception ioe){
                 ioe.printStackTrace();
             }
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Registro administrador");
-            alert.setHeaderText("Contrasena");
-            alert.setContentText("Las contrasenas no son iguales");
+            alert.setHeaderText("Contraseña");
+            alert.setContentText("Las contraseñas no son iguales");
             txtContrasena.requestFocus();
             alert.showAndWait();
             return;
@@ -124,5 +127,9 @@ public class RegistrarAdminFincaController {
         txtConfirmarContrasena.clear();
         txtNombreFinca.clear();
         txtExtension.clear();
+    }
+
+    public void setPrincipal(VistaPrincipalController vistaPrincipalController){
+        this.principal = vistaPrincipalController;
     }
 }

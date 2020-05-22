@@ -16,7 +16,7 @@ public class FincaBsn {
         this.fincaDao.registrarFinca(finca);
     }
 
-    public FincaDao getFincaDao() {
-        return fincaDao;
+    public Finca getFinca() {
+        return fincaDao.obtenerFinca();
     }
 }

@@ -34,7 +34,7 @@
             </GridPane>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#btnIngresar_action" text="Ingresar" />
+                <Button fx:id="btnIngresar" mnemonicParsing="false" onAction="#btnIngresar_action" text="Ingresar" />
               </buttons>
             </ButtonBar>
          </children>

@@ -15,7 +15,7 @@ public class AdministradorBsn {
         this.administradorDao.registrarAdministrador(administrador);
     }
 
-    public AdministradorDao getAdministradorDao() {
-        return administradorDao;
+    public Administrador getAdministrador() {
+        return administradorDao.obtenerAdministrador();
     }
 }

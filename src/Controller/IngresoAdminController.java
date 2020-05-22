@@ -1,14 +1,13 @@
 package Controller;
 
-import Dao.impl.AdministradorDaoNio;
+import Bsn.AdministradorBsn;
+import Model.Administrador;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
-import javax.swing.*;
-import java.io.IOException;
+
 
 
 public class IngresoAdminController {
@@ -16,16 +15,28 @@ public class IngresoAdminController {
     private TextField txtIdentificacion;
     @FXML
     private PasswordField txtContrasena;
+    @FXML
+    private Button btnIngresar;
 
+    public AdministradorBsn administradorBsn = new AdministradorBsn();
 
-    public void btnIngresar_action(){
+    private VistaPrincipalController principal;
+
+    public void btnIngresar_action() {
         String idIngresado = txtIdentificacion.getText().trim();
         String contrasenaIngresado = txtContrasena.getText().trim();
-        System.out.println(AdministradorDaoNio.getAdministrador().getId());
-        System.out.println(AdministradorDaoNio.getAdministrador().getContrasena());
-
-        if (idIngresado.equals(AdministradorDaoNio.getAdministrador().getId()) && contrasenaIngresado.equals(AdministradorDaoNio.getAdministrador().getContrasena())){
-
+        Administrador administrador = this.administradorBsn.getAdministrador();
+       if (idIngresado.equals(administrador.getId()) && contrasenaIngresado.equals(administrador.getContrasena())) {
+            txtContrasena.setDisable(true);
+            txtIdentificacion.setDisable(true);
+            txtContrasena.clear();
+            txtIdentificacion.clear();
+            btnIngresar.setDisable(true);
+            this.principal.habilitarMenu();
         }
+    }
+
+    public void setPrincipal(VistaPrincipalController vistaPrincipalController){
+        this.principal = vistaPrincipalController;
     }
 }

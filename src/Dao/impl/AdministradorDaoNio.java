@@ -1,5 +1,6 @@
 package Dao.impl;
 
+import Bsn.FincaBsn;
 import Dao.AdministradorDao;
 import Dao.FincaDao;
 import Model.Administrador;
@@ -15,7 +16,6 @@ import java.nio.file.Paths;
 import static java.nio.file.StandardOpenOption.APPEND;
 
 public class AdministradorDaoNio implements AdministradorDao {
-    private static Administrador administrador;
 
     private final static String NOMBRE_ARCHIVO = "administrador";
     private final static Path ARCHIVO = Paths.get(NOMBRE_ARCHIVO);
@@ -35,7 +35,6 @@ public class AdministradorDaoNio implements AdministradorDao {
 
     @Override
     public void registrarAdministrador(Administrador administradorIngresado) {
-        this.administrador = administradorIngresado;
         String administradorString = parseAdmnistrador2String(administradorIngresado);
         byte[] datosRegistro = administradorString.getBytes();
         ByteBuffer byteBuffer = ByteBuffer.wrap(datosRegistro);
@@ -57,25 +56,27 @@ public class AdministradorDaoNio implements AdministradorDao {
     }
 
 
-    public static void obtenerAdministrador() throws IOException { ///Como hacer cuando solo se tiene un objeto en el archivo
-        BufferedReader br = null;
+    public Administrador obtenerAdministrador(){ ///Como hacer cuando solo se tiene un objeto en el archivo
+        BufferedReader br=null;
         FileReader fr;
         try{
             fr = new FileReader(NOMBRE_ARCHIVO);
             br = new BufferedReader(fr);
             String admin = br.readLine();
-            administrador = parseAdministrador2Object(admin);
-            administrador.setFinca(FincaDaoNio.getFinca());
+            if (admin!=(null) ){
+                Administrador administrador = parseAdministrador2Object(admin);
+                Finca finca = new FincaBsn().getFinca();
+                administrador.setFinca(finca);
+                return administrador;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return null;
     }
 
-    public static Administrador getAdministrador() {
-        return administrador;
-    }
 
-    private static Administrador parseAdministrador2Object(String administradorString) {
+    private Administrador parseAdministrador2Object(String administradorString) {
         String[] datosAdministrador = administradorString.split(FIELD_SEPARATOR);
         Administrador administrador = new Administrador(datosAdministrador[0],
                 datosAdministrador[1],
