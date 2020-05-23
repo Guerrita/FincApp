@@ -66,7 +66,7 @@ public class TrabajadorDaoNio implements TrabajadorDao {
     public Optional<Trabajador> consultarTrabajadorPorId(String id) {
         try (Stream<String> stream = Files.lines(ARCHIVO)) {
             Optional<String> trabajadorString = stream
-                    .filter(estudiante-> id.equals(estudiante.split(",")[0]))
+                    .filter(trabajador-> id.equals(trabajador.split(",")[0]))
                     .findFirst();
             if(trabajadorString.isPresent()){
                 return Optional.of(parseTrabajador2Object(trabajadorString.get()));

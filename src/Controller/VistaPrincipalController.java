@@ -35,20 +35,20 @@ public class VistaPrincipalController {
         if (administrador == null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/registrar-admin-finca.fxml"));
-                AnchorPane registrarEstudiante = loader.load();
+                AnchorPane registrarCeunta = loader.load();
                 RegistrarAdminFincaController controller = loader.getController();
                 controller.setPrincipal(this);
-                vistaPrincipal.setCenter(registrarEstudiante);
+                vistaPrincipal.setCenter(registrarCeunta);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ingreso-admin.fxml"));
-                AnchorPane registrarEstudiante = loader.load();
+                AnchorPane registrarCuenta = loader.load();
                 IngresoAdminController controller = loader.getController();
                 controller.setPrincipal(this);
-                vistaPrincipal.setCenter(registrarEstudiante);
+                vistaPrincipal.setCenter(registrarCuenta);
             } catch (IOException e) {
                 e.printStackTrace();
             }
