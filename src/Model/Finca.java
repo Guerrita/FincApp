@@ -7,11 +7,44 @@ public class Finca {
                    extension;
     private List<Trabajador> trabajadores;
     private Administrador administrador;
-    private Caja inventario;
+    private int capital, ingresos, egresos;
+    private List<Transaccion> facturas;
 
     public Finca(String nombre, String extension) {
         this.nombre = nombre;
         this.extension = extension;
+    }
+
+    public int getCapital() {
+        return capital;
+    }
+
+    public void setCapital(int capital) {
+        this.capital = capital;
+    }
+
+    public int getIngresos() {
+        return ingresos;
+    }
+
+    public void setIngresos(int ingresos) {
+        this.ingresos = ingresos;
+    }
+
+    public int getEgresos() {
+        return egresos;
+    }
+
+    public void setEgresos(int egresos) {
+        this.egresos = egresos;
+    }
+
+    public List<Transaccion> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Transaccion> facturas) {
+        this.facturas = facturas;
     }
 
     public String getNombre() {
@@ -46,11 +79,4 @@ public class Finca {
         this.administrador = administrador;
     }
 
-    public Caja getInventario() {
-        return inventario;
-    }
-
-    public void setInventario(Caja inventario) {
-        this.inventario = inventario;
-    }
 }

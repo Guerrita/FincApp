@@ -38,6 +38,10 @@ public class TrabajadorDaoNio implements TrabajadorDao {
 
     @Override
     public void registrarTrabajador(Trabajador trabajadorIngresado) throws LlaveDuplicadaException {
+        Optional<Trabajador> trabajadorOptional = this.consultarTrabajadorPorId(trabajadorIngresado.getId());
+        if(trabajadorOptional.isPresent()){
+            throw new LlaveDuplicadaException(trabajadorIngresado.getId());
+        }
         String trabajadorString = parseTrabajador2String(trabajadorIngresado);
         byte[] datosRegistro = trabajadorString.getBytes();
         ByteBuffer byteBuffer = ByteBuffer.wrap(datosRegistro);
@@ -53,16 +57,25 @@ public class TrabajadorDaoNio implements TrabajadorDao {
         sb.append(trabajador.getId()).append(FIELD_SEPARATOR)
                 .append(trabajador.getNombres()).append(FIELD_SEPARATOR)
                 .append(trabajador.getApellidos()).append(FIELD_SEPARATOR)
-                .append(trabajador.getCelular()).append(RECORD_SEPARATOR)
+                .append(trabajador.getCelular()).append(FIELD_SEPARATOR)
                 .append(trabajador.getFechaDeRegistro()).append(RECORD_SEPARATOR);
         return sb.toString();
     }
 
     @Override
     public Optional<Trabajador> consultarTrabajadorPorId(String id) {
+        try (Stream<String> stream = Files.lines(ARCHIVO)) {
+            Optional<String> trabajadorString = stream
+                    .filter(estudiante-> id.equals(estudiante.split(",")[0]))
+                    .findFirst();
+            if(trabajadorString.isPresent()){
+                return Optional.of(parseTrabajador2Object(trabajadorString.get()));
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
         return Optional.empty();
     }
-    //ToAsk así? optional.empty()?
 
     @Override
     public List<Trabajador> listarTrabajadores() {
@@ -80,7 +93,6 @@ public class TrabajadorDaoNio implements TrabajadorDao {
         String[] datosTrabajador = trabajadorString.split(FIELD_SEPARATOR);
         Trabajador trabajador = new Trabajador(datosTrabajador[0], datosTrabajador[1]
                 , datosTrabajador[2], datosTrabajador[3], LocalDate.parse(datosTrabajador[4]));
-        //todo revisar machetazo de localDate.parse() fecha
         return trabajador;
     }
 
