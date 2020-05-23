@@ -53,6 +53,7 @@ public class FincaDaoNio implements FincaDao {
 
 
     //Si la finca esta registrada estos dos metodos obtienen los datos y crean la finca
+    @Override
     public Finca obtenerFinca(){ ///Como hacer cuando solo se tiene un objeto en el archivo
         BufferedReader br = null;
         FileReader fr;
@@ -60,11 +61,11 @@ public class FincaDaoNio implements FincaDao {
             fr = new FileReader(NOMBRE_ARCHIVO);
             br = new BufferedReader(fr);
             String fincaString = br.readLine();
-            if ("".equals(fincaString)){
+            if (fincaString!=null){
                 Finca finca = parseFinca2Object(fincaString);
+                //Falta agregar los trabajadores y las transacciones a la finca
                 return finca;
             }
-                //Falta agregar los trabajadores y la caja a la finca
         }catch (Exception e){
             e.printStackTrace();
         }

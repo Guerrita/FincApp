@@ -29,6 +29,7 @@ public class VistaPrincipalController {
 
     @FXML
     public void initialize() throws IOException {
+        //Transacciones y trabajadores
         Finca finca = this.fincaBsn.getFinca();
         Administrador administrador = this.administradorBsn.getAdministrador();
         if (administrador == null) {

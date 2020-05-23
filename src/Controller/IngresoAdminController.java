@@ -3,6 +3,7 @@ package Controller;
 import Bsn.AdministradorBsn;
 import Model.Administrador;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -33,7 +34,15 @@ public class IngresoAdminController {
             txtIdentificacion.clear();
             btnIngresar.setDisable(true);
             this.principal.habilitarMenu();
-        }
+        }else {
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Ingreso administrador");
+           alert.setHeaderText("Ingreso");
+           alert.setContentText("La cuenta o la contraseña son incorrectas");
+           txtContrasena.requestFocus();
+           alert.showAndWait();
+           return;
+       }
     }
 
     public void setPrincipal(VistaPrincipalController vistaPrincipalController){
