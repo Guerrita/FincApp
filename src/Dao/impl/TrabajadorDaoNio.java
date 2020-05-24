@@ -1,6 +1,5 @@
 package Dao.impl;
 
-import Bsn.exception.TrabajadorYaExisteException;
 import Dao.TrabajadorDao;
 import Dao.exception.LlaveDuplicadaException;
 import Model.Trabajador;

@@ -78,8 +78,8 @@ public class AgregarTrabajadorController {
 
     private boolean validarCampos(LocalDate fecha, String... campos) {
         if(fecha==null)return false;
-        for (int i = 0; i < campos.length; i++) {
-            if (campos[i] == null || "".equals(campos[i])) {
+        for (String campo : campos) {
+            if (campo == null || "".equals(campo)) {
                 return false;
             }
         }

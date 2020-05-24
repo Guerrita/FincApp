@@ -1,14 +1,21 @@
 package Controller;
 
+import Bsn.FincaBsn;
+import Bsn.exception.ValorNegativoException;
 import Model.Transaccion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgregarTransaccionController {
+
+    private FincaBsn fincaBsn= new FincaBsn();
+    private final List<String> tiposTransaccion= crearListaTipoTransaccion();
+
     @FXML
     private TextField txtDescripcion,txtValor;
 
@@ -16,7 +23,12 @@ public class AgregarTransaccionController {
     private DatePicker datePickerFecha;
 
     @FXML
+    private ComboBox<String> cmbTipoDeTransaccion;
+
+    @FXML
     public void  initialize() {
+        ObservableList<String> observableTiposTransaccion = FXCollections.observableList(tiposTransaccion);
+        cmbTipoDeTransaccion.setItems(observableTiposTransaccion);
         txtValor.setTextFormatter(new TextFormatter<>(change -> {
             if (change.getControlNewText().matches("([1-9][0-9]*)?")&& change.getControlNewText().length()<=12){
                 return change;
@@ -26,35 +38,42 @@ public class AgregarTransaccionController {
     }
 
     public void btnIngresar_action(){
+        String tipoTransaccion= cmbTipoDeTransaccion.getValue();
         String DescripcionIngresado = txtDescripcion.getText().trim();
         String valorIngresado = txtValor.getText().trim();
         LocalDate fechaIngresada = datePickerFecha.getValue();
-        if(!validarCampos(fechaIngresada, DescripcionIngresado, valorIngresado)){
+        if(!validarCampos(fechaIngresada, DescripcionIngresado, valorIngresado, tipoTransaccion)){
             mostrarAlertaErrorTransaccion("Proceso de registro", "Ingrese " +
                     "todos los campos");
             return;
         }
+        Transaccion transaccion = new Transaccion(tipoTransaccion
+                ,DescripcionIngresado,Integer.valueOf(valorIngresado), fechaIngresada);
         try{
-            //todo guardar en el negocio, excepcion de que no sea negativo, sin embargo el campo de ingreso de datos se
-            // controla al no permitir este caracter al inicio, mas bien de que no sea una transaccion repetida.
-            Transaccion transaccion = new Transaccion(DescripcionIngresado,Integer.valueOf(valorIngresado), fechaIngresada);
+            fincaBsn.registrarTransaccion(transaccion);
             Alert alertExito = new Alert(Alert.AlertType.INFORMATION);
             alertExito.setTitle("Registro de Transacción");
-            alertExito.setHeaderText("Resultado de la operación");
+            alertExito.setHeaderText("Result3ado de la operación");
             alertExito.setContentText("El registro ha sido exitoso");
             alertExito.showAndWait();
             limpiarCampos();
-        }catch(Exception e){
-
+        }catch(ValorNegativoException vne){
+            mostrarAlertaErrorTransaccion("Registro de transacción"
+                    ,"Ha ocurrido un error");
         }
+    }
 
-
+    private List<String> crearListaTipoTransaccion() {
+        List<String> tipoTransaccion= new ArrayList<>(2);
+        tipoTransaccion.add("Ingreso");
+        tipoTransaccion.add("Egreso");
+        return tipoTransaccion;
     }
 
     private boolean validarCampos(LocalDate fecha, String... campos) {
         if(fecha==null)return false;
-        for (int i = 0; i < campos.length; i++) {
-            if (campos[i] == null || "".equals(campos[i])) {
+        for (String campo : campos) {
+            if (campo == null || "".equals(campo)) {
                 return false;
             }
         }

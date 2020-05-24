@@ -5,13 +5,22 @@ import java.time.LocalDateTime;
 
 public class Transaccion {
     private int valor;
-    private String Descripcion;
+    private String Descripcion, tipo;
     private LocalDate fecha;
 
-    public Transaccion(String descripcion, int valor, LocalDate fecha) {
+    public Transaccion(String tipoTransaccion, String descripcion, int valor, LocalDate fecha) {
+        this.tipo=tipoTransaccion;
         this.valor = valor;
-        Descripcion = descripcion;
+        this.Descripcion = descripcion;
         this.fecha = fecha;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public int getValor() {
@@ -27,7 +36,7 @@ public class Transaccion {
     }
 
     public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+        this.Descripcion = descripcion;
     }
 
     public LocalDate getFecha() {
@@ -37,4 +46,5 @@ public class Transaccion {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+
 }
