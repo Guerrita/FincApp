@@ -7,10 +7,10 @@
    <children>
       <TableView fx:id="tblTrabajadores" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
+            <TableColumn fx:id="clmId" prefWidth="75.0" text="Id" />
           <TableColumn fx:id="clmNombres" prefWidth="75.0" text="Nombres" />
           <TableColumn fx:id="clmApellidos" prefWidth="75.0" text="Apellidos" />
             <TableColumn fx:id="clmCelular" prefWidth="75.0" text="Celular" />
-            <TableColumn fx:id="clmId" prefWidth="75.0" text="Id" />
             <TableColumn fx:id="clmFechaRegistro" prefWidth="75.0" text="Fecha de registro" />
         </columns>
          <columnResizePolicy>

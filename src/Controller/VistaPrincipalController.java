@@ -3,14 +3,10 @@ package Controller;
 
 import Bsn.AdministradorBsn;
 import Bsn.FincaBsn;
-import Dao.FincaDao;
-import Dao.impl.AdministradorDaoNio;
-import Dao.impl.FincaDaoNio;
 import Model.Administrador;
 import Model.Finca;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -28,7 +24,7 @@ public class VistaPrincipalController {
     public FincaBsn fincaBsn = new FincaBsn();
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
         //Transacciones y trabajadores
         Finca finca = this.fincaBsn.getFinca();
         Administrador administrador = this.administradorBsn.getAdministrador();

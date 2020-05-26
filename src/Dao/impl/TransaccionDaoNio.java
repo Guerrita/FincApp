@@ -22,7 +22,7 @@ public class TransaccionDaoNio implements TransaccionDao {
 
     private final static String NOMBRE_ARCHIVO ="transacciones";
     private final static Path ARCHIVO = Paths.get(NOMBRE_ARCHIVO);
-    private final static String FIELD_SEPARATOR= ",";
+    private final static String FIELD_SEPARATOR= "°";
     private final static String RECORD_SEPARATOR= System.lineSeparator();
 
     public TransaccionDaoNio(){

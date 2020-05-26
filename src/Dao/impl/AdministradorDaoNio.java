@@ -56,8 +56,8 @@ public class AdministradorDaoNio implements AdministradorDao {
     }
 
 
-    public Administrador obtenerAdministrador(){ ///Como hacer cuando solo se tiene un objeto en el archivo
-        BufferedReader br=null;
+    public Administrador obtenerAdministrador(){
+        BufferedReader br;
         FileReader fr;
         try{
             fr = new FileReader(NOMBRE_ARCHIVO);

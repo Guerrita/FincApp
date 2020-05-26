@@ -30,7 +30,13 @@ public class AgregarTransaccionController {
         ObservableList<String> observableTiposTransaccion = FXCollections.observableList(tiposTransaccion);
         cmbTipoDeTransaccion.setItems(observableTiposTransaccion);
         txtValor.setTextFormatter(new TextFormatter<>(change -> {
-            if (change.getControlNewText().matches("([1-9][0-9]*)?")&& change.getControlNewText().length()<=12){
+            if (change.getControlNewText().matches("([1-9][0-9]*)?")&& change.getControlNewText().length()<=8){
+                return change;
+            }
+            return null;
+        }));
+        txtDescripcion.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().matches("^[\\p{L} .,;'-]+$")&& change.getControlNewText().length()<=100){
                 return change;
             }
             return null;
@@ -53,7 +59,7 @@ public class AgregarTransaccionController {
             fincaBsn.registrarTransaccion(transaccion);
             Alert alertExito = new Alert(Alert.AlertType.INFORMATION);
             alertExito.setTitle("Registro de Transacción");
-            alertExito.setHeaderText("Result3ado de la operación");
+            alertExito.setHeaderText("Resultado de la operación");
             alertExito.setContentText("El registro ha sido exitoso");
             alertExito.showAndWait();
             limpiarCampos();
