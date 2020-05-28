@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AgregarTrabajadorController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AgregarTrabajadorController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
-            <Label alignment="TOP_LEFT" text="Registrar Trabajador ">
+            <Label alignment="TOP_LEFT" text="Registrar Trabajador " textFill="#02b354">
                <padding>
                   <Insets bottom="20.0" right="20.0" top="20.0" />
                </padding>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
             </Label>
-            <GridPane prefWidth="460.0">
+            <GridPane prefWidth="460.0" vgap="15.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="251.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="444.0" minWidth="10.0" prefWidth="309.0" />
@@ -34,20 +48,29 @@
                   <Label prefHeight="17.0" prefWidth="254.0" text="Apellidos:" GridPane.rowIndex="2" />
                   <Label prefHeight="17.0" prefWidth="255.0" text="Celular:" GridPane.rowIndex="3" />
                   <Label prefHeight="17.0" prefWidth="252.0" text="Fecha de registro:" textAlignment="CENTER" GridPane.rowIndex="4" />
-                  <TextField fx:id="txtIdTrabajador" prefHeight="25.0" prefWidth="312.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="txtNombresTrabajador" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtApellidosTrabajador" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtCelularTrabajador" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <DatePicker fx:id="calendarFechaDeRegistro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <JFXTextField fx:id="txtIdTrabajador" focusColor="#03fc84" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="txtNombresTrabajador" focusColor="#03fc84" prefHeight="38.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="txtApellidosTrabajador" focusColor="#03fc84" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="txtCelularTrabajador" focusColor="#03fc84" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXDatePicker fx:id="calendarFechaDeRegistro" defaultColor="#04c96a" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
                <padding>
                   <Insets left="20.0" />
                </padding>
             </GridPane>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
-              <buttons>
-                <Button mnemonicParsing="false" onAction="#btnGuardarTrabajador_action" text="Guardar" />
-              </buttons>
+               <buttons>
+                  <JFXButton buttonType="RAISED" onAction="#btnGuardarTrabajador_action" style="-fx-background-color: #02d966; -fx-background-radius: 15; -fx-border-radius: 15;" text="Guardar">
+                     <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="#00ff48" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </ripplerFill>
+                  </JFXButton>
+               </buttons>
             </ButtonBar>
          </children></VBox>
    </children>

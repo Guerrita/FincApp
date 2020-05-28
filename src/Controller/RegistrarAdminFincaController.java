@@ -2,26 +2,25 @@ package Controller;
 
 import Bsn.AdministradorBsn;
 import Bsn.FincaBsn;
-import Dao.impl.AdministradorDaoNio;
 import Model.Administrador;
 import Model.Finca;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-
-import java.io.IOException;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 
 public class RegistrarAdminFincaController {
     @FXML
-    private TextField txtNombres,txtApellidos,txtIdentificacion,txtCelular,txtNombreFinca,txtExtension;
+    private JFXTextField txtNombres,txtApellidos,txtIdentificacion,txtCelular,txtNombreFinca,txtExtension;
     @FXML
-    private PasswordField txtContrasena,txtConfirmarContrasena;
+    private JFXPasswordField txtContrasena,txtConfirmarContrasena;
     @FXML
-    private Button btnGuardar;
+    private JFXButton btnGuardar;
 
     private AdministradorBsn administradorBsn = new AdministradorBsn();
     private FincaBsn fincaBsn = new FincaBsn();
@@ -48,6 +47,51 @@ public class RegistrarAdminFincaController {
             }
             return null;
         }));
+
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        FontIcon warnIcon = new FontIcon(FontAwesomeSolid.ARROW_UP.getDescription());
+        validator.setIcon(warnIcon);
+
+        txtNombres.getValidators().add(validator);
+        txtNombres.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtNombres.validate();
+        });
+
+        txtIdentificacion.getValidators().add(validator);
+        txtIdentificacion.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtIdentificacion.validate();
+        });
+
+        txtApellidos.getValidators().add(validator);
+        txtApellidos.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtApellidos.validate();
+        });
+
+        txtCelular.getValidators().add(validator);
+        txtCelular.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtCelular.validate();
+        });
+
+        txtContrasena.getValidators().add(validator);
+        txtContrasena.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtContrasena.validate();
+        });
+
+        txtConfirmarContrasena.getValidators().add(validator);
+        txtConfirmarContrasena.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtConfirmarContrasena.validate();
+        });
+
+        txtNombreFinca.getValidators().add(validator);
+        txtNombreFinca.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtNombreFinca.validate();
+        });
+
+        txtExtension.getValidators().add(validator);
+        txtExtension.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtExtension.validate();
+        });
+
 
     }
 
@@ -90,6 +134,7 @@ public class RegistrarAdminFincaController {
                 btnGuardar.setDisable(true);
                 limpiarCampos();
                 this.principal.habilitarMenu();
+                this.principal.habilitarVistaBienvenida();
             }catch (Exception ioe){
                 ioe.printStackTrace();
             }

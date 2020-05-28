@@ -54,6 +54,16 @@ public class VistaPrincipalController {
         this.menuBarPrincipal.setVisible(true);
     }
 
+    public void habilitarVistaBienvenida(){
+        try {
+            AnchorPane vistaBienvenida = FXMLLoader
+                    .load(getClass().getResource("../View/vista-bienvenida.fxml"));
+            this.vistaPrincipal.setCenter(vistaBienvenida);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void mnuAgregarTrabajador_action() {
         try {
             AnchorPane agregarTrabajador = FXMLLoader

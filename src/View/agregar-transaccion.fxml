@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AgregarTransaccionController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AgregarTransaccionController">
     <children>
-        <VBox layoutX="32.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox layoutY="7.0" prefHeight="400.0" prefWidth="600.0" spacing="15.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0">
             <children>
-            <Label text="Agrega tu transaccion">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin></Label>
-            <GridPane>
+            <Label text="Agrega tu transaccion" textFill="#02b354">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <GridPane vgap="15.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,11 +38,11 @@
                   <Label text="Descripcion" GridPane.rowIndex="1" />
                   <Label text="Valor" GridPane.rowIndex="2" />
                   <Label text="Fecha" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtDescripcion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtValor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <DatePicker fx:id="datePickerFecha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label text="Tipo de Transacción" />
-                  <ComboBox fx:id="cmbTipoDeTransaccion" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <JFXComboBox fx:id="cmbTipoDeTransaccion" focusColor="#03fc84" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="txtDescripcion" focusColor="#03fc84" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="txtValor" focusColor="#03fc84" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXDatePicker fx:id="datePickerFecha" defaultColor="#04c96a" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" />

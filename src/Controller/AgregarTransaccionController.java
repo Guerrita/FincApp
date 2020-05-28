@@ -3,10 +3,17 @@ package Controller;
 import Bsn.FincaBsn;
 import Bsn.exception.ValorNegativoException;
 import Model.Transaccion;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import org.kordamp.ikonli.javafx.FontIcon;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +24,13 @@ public class AgregarTransaccionController {
     private final List<String> tiposTransaccion= crearListaTipoTransaccion();
 
     @FXML
-    private TextField txtDescripcion,txtValor;
+    private JFXTextField txtDescripcion,txtValor;
 
     @FXML
-    private DatePicker datePickerFecha;
+    private JFXDatePicker datePickerFecha;
 
     @FXML
-    private ComboBox<String> cmbTipoDeTransaccion;
+    private JFXComboBox<String> cmbTipoDeTransaccion;
 
     @FXML
     public void  initialize() {
@@ -41,6 +48,30 @@ public class AgregarTransaccionController {
             }
             return null;
         }));
+
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        FontIcon warnIcon = new FontIcon(FontAwesomeSolid.ARROW_UP.getDescription());
+        validator.setIcon(warnIcon);
+
+        txtDescripcion.getValidators().add(validator);
+        txtDescripcion.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtDescripcion.validate();
+        });
+
+        txtValor.getValidators().add(validator);
+        txtValor.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtValor.validate();
+        });
+
+        datePickerFecha.getValidators().add(validator);
+        datePickerFecha.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) datePickerFecha.validate();
+        });
+
+        cmbTipoDeTransaccion.getValidators().add(validator);
+        cmbTipoDeTransaccion.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) cmbTipoDeTransaccion.validate();
+        });
     }
 
     public void btnIngresar_action(){

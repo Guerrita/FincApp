@@ -3,21 +3,26 @@ package Controller;
 import Bsn.TrabajadorBsn;
 import Bsn.exception.TrabajadorYaExisteException;
 import Model.Trabajador;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.time.LocalDate;
 
 
 public class AgregarTrabajadorController {
     @FXML
-    private TextField txtIdTrabajador, txtNombresTrabajador,
+    private JFXTextField txtIdTrabajador, txtNombresTrabajador,
             txtApellidosTrabajador, txtCelularTrabajador;
     @FXML
-    private DatePicker calendarFechaDeRegistro;
+    private JFXDatePicker calendarFechaDeRegistro;
 
     @FXML
     public void initialize(){
@@ -33,6 +38,36 @@ public class AgregarTrabajadorController {
             }
             return null;
         }));
+
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        FontIcon warnIcon = new FontIcon(FontAwesomeSolid.ARROW_UP.getDescription());
+        validator.setIcon(warnIcon);
+
+        txtNombresTrabajador.getValidators().add(validator);
+        txtNombresTrabajador.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtNombresTrabajador.validate();
+        });
+
+        txtIdTrabajador.getValidators().add(validator);
+        txtIdTrabajador.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtIdTrabajador.validate();
+        });
+
+        txtApellidosTrabajador.getValidators().add(validator);
+        txtApellidosTrabajador.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtApellidosTrabajador.validate();
+        });
+
+        txtCelularTrabajador.getValidators().add(validator);
+        txtCelularTrabajador.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) txtCelularTrabajador.validate();
+        });
+
+        calendarFechaDeRegistro.getValidators().add(validator);
+        calendarFechaDeRegistro.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal) calendarFechaDeRegistro.validate();
+        });
+
     }
 
     private TrabajadorBsn trabajadorBsn=new TrabajadorBsn();
