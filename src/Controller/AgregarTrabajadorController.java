@@ -33,7 +33,7 @@ public class AgregarTrabajadorController {
             return null;
         }));
         txtCelularTrabajador.setTextFormatter(new TextFormatter<>(change -> {
-            if (change.getControlNewText().matches("([1-9][0-9]*)?") && change.getControlNewText().length() <= 12) {
+            if (change.getControlNewText().matches("([1-9][0-9]*)?") && change.getControlNewText().length() <= 10) {
                 return change;
             }
             return null;

@@ -32,17 +32,18 @@ public class FincaBsn {
        try{
            this.transaccionDao.registrarTransaccion(transaccion);
            String tipoT = transaccion.getTipo();
-           System.out.println(transaccion.getValor());
+           Finca finca = getFinca();
            switch (tipoT){
 
                case "Ingreso":
-                   getFinca().setCapital(getFinca().getCapital()+transaccion.getValor());
-                   fincaDao.actualizarCapital(getFinca().getCapital());
+                   finca.setCapital(getFinca().getCapital()+transaccion.getValor());
+                   fincaDao.actualizarCapital(finca.getCapital());
+                   finca.getCapital();
                    break;
 
                case "Egreso":
-                   getFinca().setCapital(getFinca().getCapital()-transaccion.getValor());
-                   fincaDao.actualizarCapital(getFinca().getCapital());
+                   finca.setCapital(getFinca().getCapital()-transaccion.getValor());
+                   fincaDao.actualizarCapital(finca.getCapital());
                    break;
            }
 

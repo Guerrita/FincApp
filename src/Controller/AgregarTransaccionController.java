@@ -118,8 +118,8 @@ public class AgregarTransaccionController {
     }
 
     private void limpiarCampos(){
-        txtDescripcion.clear();
         txtValor.clear();
+        txtDescripcion.clear();
         datePickerFecha.getEditor().clear();
     }
 

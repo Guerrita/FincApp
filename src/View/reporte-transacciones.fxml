@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReporteTansaccionesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReporteTansaccionesController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="tblTransacciones" prefHeight="355.0" prefWidth="600.0">
+            <TableView fx:id="tblTransacciones">
               <columns>
                   <TableColumn fx:id="clmTipoTransaccion" prefWidth="75.0" text="Tipo de transaccion" />
                 <TableColumn fx:id="clmDescripcion" prefWidth="75.0" text="Descripcion" />
@@ -22,7 +22,7 @@
                </columnResizePolicy>
             </TableView>
             <Label text="Estado financiero de la finca: " />
-            <Label fx:id="lblEstadoFinanciero" prefHeight="17.0" prefWidth="356.0" />
+            <Label fx:id="lblEstadoFinanciero" text="Label" />
          </children>
       </VBox>
    </children>
