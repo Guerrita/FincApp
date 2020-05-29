@@ -4,9 +4,7 @@ import Dao.FincaDao;
 import Model.Administrador;
 import Model.Finca;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
@@ -47,7 +45,9 @@ public class FincaDaoNio implements FincaDao {
     private String parseFinca2String(Finca fincaIngresada) {
         StringBuilder sb = new StringBuilder();
         sb.append(fincaIngresada.getNombre()).append(FIELD_SEPARATOR)
-                .append(fincaIngresada.getExtension()).append(RECORD_SEPARATOR);
+                .append(fincaIngresada.getExtension()).append(FIELD_SEPARATOR).
+                append(fincaIngresada.getCapital()).
+                append(RECORD_SEPARATOR);
         return sb.toString();
     }
 
@@ -76,7 +76,16 @@ public class FincaDaoNio implements FincaDao {
         String[] datosFinca = fincaString.split(FIELD_SEPARATOR);
         Finca fincaObject = new Finca(datosFinca[0],
                 datosFinca[1]);
+        fincaObject.setCapital(Integer.parseInt(datosFinca[2]));
         return fincaObject;
+    }
+
+    public void actualizarCapital(int capitalNuevo) throws IOException {
+        Finca finca=obtenerFinca();
+        finca.setCapital(capitalNuevo);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(NOMBRE_ARCHIVO));
+        bw.write("");
+        registrarFinca(finca);
     }
 
 }

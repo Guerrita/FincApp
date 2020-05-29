@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReporteTansaccionesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReporteTansaccionesController">
    <children>
-      <TableView fx:id="tblTransacciones" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columns>
-            <TableColumn fx:id="clmTipoTransaccion" prefWidth="75.0" text="Tipo de transaccion" />
-          <TableColumn fx:id="clmDescripcion" prefWidth="75.0" text="Descripcion" />
-          <TableColumn fx:id="clmValor" prefWidth="75.0" text="Valor" />
-            <TableColumn fx:id="clmFecha" prefWidth="75.0" text="Fecha" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="tblTransacciones" prefHeight="355.0" prefWidth="600.0">
+              <columns>
+                  <TableColumn fx:id="clmTipoTransaccion" prefWidth="75.0" text="Tipo de transaccion" />
+                <TableColumn fx:id="clmDescripcion" prefWidth="75.0" text="Descripcion" />
+                <TableColumn fx:id="clmValor" prefWidth="75.0" text="Valor" />
+                  <TableColumn fx:id="clmFecha" prefWidth="75.0" text="Fecha" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label text="Estado financiero de la finca: " />
+            <Label fx:id="lblEstadoFinanciero" prefHeight="17.0" prefWidth="356.0" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

@@ -7,7 +7,7 @@ public class Finca {
                    extension;
     private List<Trabajador> trabajadores;
     private Administrador administrador;
-    private int capital, ingresos, egresos;
+    private int capital;
     private List<Transaccion> facturas;
 
     public Finca(String nombre, String extension) {
@@ -21,22 +21,6 @@ public class Finca {
 
     public void setCapital(int capital) {
         this.capital = capital;
-    }
-
-    public int getIngresos() {
-        return ingresos;
-    }
-
-    public void setIngresos(int ingresos) {
-        this.ingresos = ingresos;
-    }
-
-    public int getEgresos() {
-        return egresos;
-    }
-
-    public void setEgresos(int egresos) {
-        this.egresos = egresos;
     }
 
     public List<Transaccion> getFacturas() {
