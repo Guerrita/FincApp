@@ -41,7 +41,7 @@
                </rowConstraints>
                <children>
                   <JFXTextField fx:id="txtIdTrabajador" focusColor="#03fc84" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
-                  <JFXTextField fx:id="txtNombresTrabajador" alignment="CENTER" focusColor="#03fc84" prefHeight="38.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="txtNombresTrabajador" focusColor="#03fc84" prefHeight="38.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label prefHeight="17.0" prefWidth="255.0" text="ID:" textAlignment="CENTER" />
                   <Label prefHeight="17.0" prefWidth="288.0" text="Nombres:" GridPane.rowIndex="1" />
                   <Label prefHeight="17.0" prefWidth="254.0" text="Apellidos:" GridPane.rowIndex="2" />
